@@ -27,29 +27,18 @@ class DownloadAllShopInteractorNSOpImpl: DownloadAllShopsinteractor{
             if let url = URL(string: urlString), let data = NSData(contentsOf: url) as Data? {
                 // los datos los convertimos a objeto JSON con try catch
                 // Y lo convierte en un diccionario con Claves, Valor
-                do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, Any>
-                    let result = jsonObject["result"] as! [Dictionary<String, Any>]
-                    
-                    let shops = Shops()
-                    
-                    // Recorremos el array result recogido de Internet las tiendas
-                    for shopJson in result{
-                        let shop = Shop(name: shopJson["name"]! as! String)
-                        shop.address = shopJson["address"]! as! String
-                        
-                        shops.add(shop: shop)
-                    }
-                    
-                    // Volver al hilo principal
-                    OperationQueue.main.addOperation {
-                        // LLamo a la clasura
-                        onSuccess(shops)
-                    }
-                    
-                } catch {
-                    
+                
+                // Aqui le paso el parseo con la funcion creada en archivo aparte
+                // Así todo queda más limpio
+                let shops = parseShops(data: data)
+                
+                // Volver al hilo principal
+                OperationQueue.main.addOperation {
+                    // LLamo a la clasura
+                    onSuccess(shops)
                 }
+                    
+                
             }
         
         }

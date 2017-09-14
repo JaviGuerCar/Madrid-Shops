@@ -100,6 +100,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="buA-vE-P5b" id="Ubj-DZ-i9o"/>
                                             <outlet property="label" destination="Ylr-kt-Ybx" id="wdL-uk-uCz"/>
+                                            <segue destination="LMi-zl-e8F" kind="show" identifier="ShowShopDetailSegue" id="uUb-Cw-E70"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -129,6 +130,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="466" y="134"/>
+        </scene>
+        <!--Shop Detail View Controller-->
+        <scene sceneID="AvR-Ye-Wf6">
+            <objects>
+                <viewController id="LMi-zl-e8F" customClass="ShopDetailViewController" customModule="MadridShops" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tly-gk-t9s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rQf-78-ECL">
+                                <rect key="frame" x="16" y="82" width="343" height="252"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YRS-Pd-opy">
+                                <rect key="frame" x="16" y="357" width="343" height="290"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="ipQ-ZD-hSf"/>
+                    </view>
+                    <connections>
+                        <outlet property="shopDetailDescription" destination="rQf-78-ECL" id="01R-Lo-2Mu"/>
+                        <outlet property="shopImage" destination="YRS-Pd-opy" id="pKp-wc-QSS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rlV-aQ-0g1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1245.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

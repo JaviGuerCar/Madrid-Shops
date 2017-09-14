@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let downloadShopsInteractor: DownloadAllShopsinteractor = DownloadAllShopInteractorNSOpImpl()
+        let downloadShopsInteractor: DownloadAllShopsinteractor = DownloadAllShopsinteractorNSURLSessionImpl()
+        //let downloadShopsInteractor: DownloadAllShopsinteractor = DownloadAllShopInteractorNSOpImpl()
 
 //        downloadShopsInteractor.execute(onSuccess: { (shops: Shops) in
 //            // OK
@@ -37,7 +38,25 @@ class ViewController: UIViewController {
         })
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // tengo que distinguir por donde he podido llegar al Segue
+        // Para eso le pusimos el identificador en el StoryBoard
+        if segue.identifier == "ShowShopDetailSegue" {
+            // Tengo que indicarle el destino del segue
+            // que no es más que el ViewController al que quiero llegar
+            // en mi caso al ShopDetailViewController. Como segue.destination
+            // me da un ViewController genérico, necesito convertirlo
+            let vc = segue.destination as! ShopDetailViewController
+            
+            // necesito obtener el indexpath de la celda que se toca
+            let indexPath = self.shopsCollectionView.indexPathsForSelectedItems![0]
+            let selectedShop = self.shops?.get(index: indexPath.row)
+            
+            // Injecto la tienda (Inyeccion dependencias) a través de una propiedad
+            // creada en el ShopDetailViewController, llamada "shop"
+            vc.shop = selectedShop
+        }
+    }
 
 
 }
