@@ -1,5 +1,5 @@
 //
-//  DownloadAllShopsinteractor.swift
+//  DownloadAllShopsInteractor.swift
 //  MadridShops
 //
 //  Created by Fco. Javier Guerrero Carmona on 7/9/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DownloadAllShopsinteractor{
+protocol DownloadAllShopsInteractor{
     // metodo que admite unas clausuras
     // la segunda clausura es opcional
     // execute: downloads all shops. Return on the main thread

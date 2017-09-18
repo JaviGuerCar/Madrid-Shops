@@ -21,7 +21,9 @@ class ShopDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = self.shop?.name
-        self.shopDetailDescription.text = self.shop?.description   
+        self.shopDetailDescription.text = self.shop?.description
+        self.shop?.image.loadImage(into: shopImage)
+        
     }
 
     

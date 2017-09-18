@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
+    var context: NSManagedObjectContext!
     var shops: Shops?
     
     @IBOutlet weak var shopsCollectionView: UICollectionView!
@@ -17,16 +19,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let downloadShopsInteractor: DownloadAllShopsinteractor = DownloadAllShopsinteractorNSURLSessionImpl()
-        //let downloadShopsInteractor: DownloadAllShopsinteractor = DownloadAllShopInteractorNSOpImpl()
-
-//        downloadShopsInteractor.execute(onSuccess: { (shops: Shops) in
-//            // OK
-//        }) { (error: Error) in
-//            // Error
-//        }
+        let downloadShopsInteractor: DownloadAllShopsInteractor = DownloadAllShopsinteractorNSURLSessionImpl()
         
-        downloadShopsInteractor.execute(onSuccess: { (shops: Shops) in
+        downloadShopsInteractor.execute{ (shops: Shops) in
             // OK
             print("Name: " + shops.get(index: 0).name)
             self.shops = shops
@@ -35,9 +30,23 @@ class ViewController: UIViewController {
             // sino no mostraría nada porque no hay tiendas
             self.shopsCollectionView.delegate = self
             self.shopsCollectionView.dataSource = self
-        })
+            
+            // Despues de descargarlo lo salvo en BD con CoreData
+            let cacheInteractor = SaveAllShopsInteractorImpl()
+            cacheInteractor.execute(shops: shops, context: self.context
+                , onSuccess: { (shops: Shops) in
+                    
+            })
+        }
     }
+    
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shop = self.shops?.get(index: indexPath.row)
+        self.performSegue(withIdentifier: "ShowShopDetailSegue", sender: shop)
+    }
+    
+    // Segue desde una celda
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // tengo que distinguir por donde he podido llegar al Segue
         // Para eso le pusimos el identificador en el StoryBoard
@@ -49,12 +58,13 @@ class ViewController: UIViewController {
             let vc = segue.destination as! ShopDetailViewController
             
             // necesito obtener el indexpath de la celda que se toca
-            let indexPath = self.shopsCollectionView.indexPathsForSelectedItems![0]
-            let selectedShop = self.shops?.get(index: indexPath.row)
+            //let indexPath = self.shopsCollectionView.indexPathsForSelectedItems![0]
+            //let selectedShop = self.shops?.get(index: indexPath.row)
             
             // Injecto la tienda (Inyeccion dependencias) a través de una propiedad
             // creada en el ShopDetailViewController, llamada "shop"
-            vc.shop = selectedShop
+            // vc.shop = selectedShop
+            vc.shop = sender as? Shop
         }
     }
 

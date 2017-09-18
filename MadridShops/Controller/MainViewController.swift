@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 // Importamos la librería DotsLoading
 import FillableLoaders
 
 class MainViewController: UIViewController {
     
+    var context: NSManagedObjectContext!
     @IBOutlet weak var redRectangle: UIView!
     var myLoader: WavesLoader?
     
@@ -80,6 +82,15 @@ class MainViewController: UIViewController {
                 self.redRectangle.layer.cornerRadius = 0
                 self.redRectangle.backgroundColor = UIColor.red
             })
+        }
+    }
+    
+    // El MainViewController mira el segue y en la función prepare
+    // le pasamos el contexto al siguiente VC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowShopsSegue" {
+            let vc = segue.destination as! ViewController
+            vc.context = self.context
         }
     }
 

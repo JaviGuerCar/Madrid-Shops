@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DownloadAllShopsinteractorNSURLSessionImpl: DownloadAllShopsinteractor {
+class DownloadAllShopsinteractorNSURLSessionImpl: DownloadAllShopsInteractor {
     
     func execute(onSuccess: @escaping (Shops) -> Void, onError: errorClosure) {
         
