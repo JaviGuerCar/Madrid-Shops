@@ -9,17 +9,18 @@
 import Foundation
 
 class ExecuteOnceInteractorImpl: ExecuteOnceInteractor {
-    func execute(closure: () -> Void) {
-        
+    func execute(firstTimeClosure: () -> Void, SecondTimeClosure: () -> Void) {
         // Obtengo el acceso a UserDefault
         let defaults = UserDefaults.standard
         
         // Si soy capaz de obtener el valor del opcional
         if let _ = defaults.string(forKey: "once") {
-          // already saved
+            // already saved
+            SecondTimeClosure()
         } else { // first time
-            closure()
+            firstTimeClosure()
         }
     }
+
 }
 

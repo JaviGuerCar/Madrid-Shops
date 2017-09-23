@@ -16,6 +16,8 @@ class ShopDetailViewController: UIViewController {
     @IBOutlet weak var shopDetailDescription: UITextView!
     
     @IBOutlet weak var shopImage: UIImageView!
+    @IBOutlet weak var shopOpeningHour: UILabel!
+    @IBOutlet weak var shopAddress: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class ShopDetailViewController: UIViewController {
         self.title = self.shop?.name
         self.shopDetailDescription.text = self.shop?.description
         self.shop?.image.loadImage(into: shopImage)
+        self.shopOpeningHour.text = self.shop?.openingHours
+        self.shopAddress.text = self.shop?.address
         
     }
 

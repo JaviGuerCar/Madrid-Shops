@@ -14,8 +14,8 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     var context: NSManagedObjectContext!
-    //var shops: Shops?
-    
+    var locationList: [MapPin]?
+
     @IBOutlet weak var shopsCollectionView: UICollectionView!
     @IBOutlet weak var map: MKMapView!
     let locationManager = CLLocationManager()
@@ -28,16 +28,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
-        ExecuteOnceInteractorImpl().execute {
+        // Ejecuto el Interactor y la primera o segunda clausura según corresponda
+        ExecuteOnceInteractorImpl().execute(firstTimeClosure: {
             initializeData()
+        }) {
+            self.shopsCollectionView.delegate = self
+            self.shopsCollectionView.dataSource = self
+            self.annotationPins()
         }
         
-        self.shopsCollectionView.delegate = self
-        self.shopsCollectionView.dataSource = self
-        
         // Centro el mapa
-        let antequeraLocation = CLLocation(latitude: 40.41889, longitude: -3.69194)
-        self.map.setCenter(antequeraLocation.coordinate, animated: true)
+        let madridLocation = CLLocation(latitude: 40.41889, longitude: -3.69194)
+        self.map.setCenter(madridLocation.coordinate, animated: true)
+        
+        // Añado los mapPins: Primero pruebo con uno
+        //let annotation1 = MapPin(coordinate: madridLocation.coordinate, title: "Prueba", subtitle: "Prueba MapPin")
+        //self.map.addAnnotation(annotation1)
+        
         
     }
     
@@ -66,6 +73,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.shopsCollectionView.dataSource = self
                     // Recargamos los datos
                     self.shopsCollectionView.reloadData()
+                    // Cargamos los mapas
+                    self.annotationPins()
             })
         }
     }
@@ -137,12 +146,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         return _fetchedResultsController!
     }
     
-    // Implemento el método de Delegado de Core Location Manger Delegate
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // Obtengo la primera localizacion
-        let location = locations[0]
-        self.map.setCenter(location.coordinate, animated: true)
-    }   
+    // Recorro las shops para pintar las anotations
+    func annotationPins() {
+        self.locationList = [MapPin]() // Creo un array de MapPin
+        if let shopItems = fetchedResultsController.fetchedObjects {
+            // Recorro el array
+            for item in shopItems {
+                // Recupero las coordenadas de las shops
+                if let longitude: CLLocationDegrees = Double(item.longitude),
+                    let latitude: CLLocationDegrees = Double(item.latitude){
+                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        let mapPin: MapPin = MapPin(coordinate: coordinate, title: item.name!, subtitle: item.address!)
+                        self.locationList?.append(mapPin)
+
+                }
+            }
+        }
+
+        self.map.addAnnotations(locationList!)
+
+        }
 
 }
 
