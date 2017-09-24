@@ -1,5 +1,5 @@
 //
-//  Event.swift
+//  Activity.swift
 //  MadridShops
 //
 //  Created by Fco. Javier Guerrero Carmona on 23/9/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Event {
+public class Activity {
     // variables que necesito
     var name: String
     var description: String = ""

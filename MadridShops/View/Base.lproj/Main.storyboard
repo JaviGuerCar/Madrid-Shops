@@ -35,30 +35,96 @@
                     <view key="view" contentMode="scaleToFill" id="F7S-zS-xv7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z36-jj-JPO">
-                                <rect key="frame" x="67" y="455" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="3ib-PN-Qu0"/>
                     </view>
                     <navigationItem key="navigationItem" title="¡MAD!" id="bhX-7a-7x7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="G4a-ER-4BA">
+                            <connections>
+                                <segue destination="aAt-pM-H5M" kind="show" id="aU5-9p-hn3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="8ml-ap-b9Z">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="ShowShopsSegue" id="iBI-kD-Qi7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="redRectangle" destination="z36-jj-JPO" id="aNh-lK-uYf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gn-AB-HtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-295" y="134"/>
+        </scene>
+        <!--Activities-->
+        <scene sceneID="dUM-g0-dJ3">
+            <objects>
+                <viewController id="aAt-pM-H5M" customClass="ActivitiesViewController" customModule="MadridShops" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gtS-Bd-LxA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OIa-K3-OQJ">
+                                <rect key="frame" x="0.0" y="64" width="414" height="332"/>
+                            </mapView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yx7-Lh-Tl7">
+                                <rect key="frame" x="0.0" y="404" width="414" height="332"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0MK-VZ-Pcq">
+                                    <size key="itemSize" width="307" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivityCell" id="4Xd-uk-qoa" customClass="CollectionViewActivityCell" customModule="MadridShops" customModuleProvider="target">
+                                        <rect key="frame" x="53.666666666666664" y="0.0" width="307" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CpJ-9P-ZZN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKY-KM-L1F">
+                                                    <rect key="frame" x="97" y="15" width="210" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="CpJ-9P-ZZN" id="PS4-5e-ZOv"/>
+                                            <outlet property="label" destination="yKY-KM-L1F" id="wZN-gm-yxV"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OIa-K3-OQJ" firstAttribute="top" secondItem="vl9-xd-aM2" secondAttribute="top" id="5rx-aM-7gO"/>
+                            <constraint firstItem="OIa-K3-OQJ" firstAttribute="leading" secondItem="vl9-xd-aM2" secondAttribute="leading" id="AFJ-kO-GS5"/>
+                            <constraint firstItem="yx7-Lh-Tl7" firstAttribute="leading" secondItem="vl9-xd-aM2" secondAttribute="leading" id="JpI-Iq-J5i"/>
+                            <constraint firstItem="yx7-Lh-Tl7" firstAttribute="top" secondItem="OIa-K3-OQJ" secondAttribute="bottom" constant="8" id="MYD-2a-0RU"/>
+                            <constraint firstItem="vl9-xd-aM2" firstAttribute="trailing" secondItem="OIa-K3-OQJ" secondAttribute="trailing" id="aSO-ZA-vvS"/>
+                            <constraint firstItem="vl9-xd-aM2" firstAttribute="trailing" secondItem="yx7-Lh-Tl7" secondAttribute="trailing" id="irx-oI-gpL"/>
+                            <constraint firstItem="vl9-xd-aM2" firstAttribute="bottom" secondItem="yx7-Lh-Tl7" secondAttribute="bottom" id="mvV-aX-2Xp"/>
+                            <constraint firstItem="yx7-Lh-Tl7" firstAttribute="height" secondItem="OIa-K3-OQJ" secondAttribute="height" id="v5b-dn-0V8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vl9-xd-aM2"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Activities" id="Hjq-zK-Pyl"/>
+                    <connections>
+                        <outlet property="activitiesCollectionView" destination="yx7-Lh-Tl7" id="rKy-Vo-QLH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WLr-pC-zGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463.768115942029" y="836.41304347826099"/>
         </scene>
         <!--Shops-->
         <scene sceneID="tne-QT-ifu">

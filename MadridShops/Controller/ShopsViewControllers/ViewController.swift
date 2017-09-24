@@ -41,9 +41,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let madridLocation = CLLocation(latitude: 40.41889, longitude: -3.69194)
         self.map.setCenter(madridLocation.coordinate, animated: true)
         
-        // Añado los mapPins: Primero pruebo con uno
-        //let annotation1 = MapPin(coordinate: madridLocation.coordinate, title: "Prueba", subtitle: "Prueba MapPin")
-        //self.map.addAnnotation(annotation1)
+        let region = MKCoordinateRegion(center: madridLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let reg = self.map.regionThatFits(region)
+        self.map.setRegion(reg, animated: true)
         
         
     }
@@ -146,11 +146,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         return _fetchedResultsController!
     }
     
-    // Recorro las shops para pintar las anotations
+    // Función para pintar las anotations
     func annotationPins() {
         self.locationList = [MapPin]() // Creo un array de MapPin
         if let shopItems = fetchedResultsController.fetchedObjects {
-            // Recorro el array
+            // Recorro los objetos de la consulta
             for item in shopItems {
                 // Recupero las coordenadas de las shops
                 if let longitude: CLLocationDegrees = Double(item.longitude),
