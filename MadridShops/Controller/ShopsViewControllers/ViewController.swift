@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     var context: NSManagedObjectContext!
     var locationList: [MapPin]?
@@ -22,6 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.map.delegate = self
         
         // Acceder a la localizacion
         self.locationManager.requestWhenInUseAuthorization()
@@ -79,11 +81,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
+    // Segue a mano
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let shop = self.shops?.get(index: indexPath.row)
         let shopCD: ShopCD = fetchedResultsController.object(at: indexPath)
         self.performSegue(withIdentifier: "ShowShopDetailSegue", sender: shopCD)
     }
+    
     
     // Segue desde una celda
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

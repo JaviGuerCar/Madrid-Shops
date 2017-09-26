@@ -25,8 +25,6 @@ class DownloadAllShopInteractorNSOpImpl: DownloadAllShopsInteractor{
         let queue = OperationQueue()
         queue.addOperation {
             if let url = URL(string: urlString), let data = NSData(contentsOf: url) as Data? {
-                // los datos los convertimos a objeto JSON con try catch
-                // Y lo convierte en un diccionario con Claves, Valor
                 
                 // Aqui le paso el parseo con la funcion creada en archivo aparte
                 // Así todo queda más limpio

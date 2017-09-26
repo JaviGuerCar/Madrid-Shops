@@ -99,6 +99,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="CpJ-9P-ZZN" id="PS4-5e-ZOv"/>
                                             <outlet property="label" destination="yKY-KM-L1F" id="wZN-gm-yxV"/>
+                                            <segue destination="iC9-Rl-2hQ" kind="show" identifier="ShowActivityDetailSegue" id="kJs-1n-X7b"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -125,6 +126,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLr-pC-zGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="463.768115942029" y="836.41304347826099"/>
+        </scene>
+        <!--Activity Detail View Controller-->
+        <scene sceneID="Lgi-1e-oBY">
+            <objects>
+                <viewController id="iC9-Rl-2hQ" customClass="ActivityDetailViewController" customModule="MadridShops" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4f2-Ki-cvJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qi4-DP-9aK">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDH-Cp-nnY">
+                                        <rect key="frame" x="8" y="8" width="396" height="261"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hoq-a7-AOM">
+                                        <rect key="frame" x="10" y="277" width="396" height="209"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="944-rE-n0i"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityDetailDescription" destination="hoq-a7-AOM" id="olX-Ub-RMf"/>
+                        <outlet property="activityImage" destination="cDH-Cp-nnY" id="6Lj-2r-xrk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jOo-JW-N3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1244.9275362318842" y="835.59782608695662"/>
         </scene>
         <!--Shops-->
         <scene sceneID="tne-QT-ifu">

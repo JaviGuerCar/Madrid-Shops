@@ -8,10 +8,13 @@
 
 import Foundation
 
+// Parse Shops
 func parseShops(data: Data) -> Shops {
     let shops = Shops()
     
     do {
+        // los datos los convertimos a objeto JSON con try catch
+        // Y lo convierte en un diccionario con Claves, Valor
         let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, Any>
         let result = jsonObject["result"] as! [Dictionary<String, Any>]
         
@@ -34,4 +37,35 @@ func parseShops(data: Data) -> Shops {
     }
     
     return shops
+}
+
+// Parse Activities
+func parseActivities(data: Data) -> Activities {
+    
+    let activities = Activities()
+    
+    do {
+        // los datos los convertimos a objeto JSON con try catch
+        // Y lo convierte en un diccionario con Claves, Valor
+        let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, Any>
+        let result = jsonObject["result"] as! [Dictionary<String, Any>]
+        
+        for activityJson in result {
+            let activity = Activity(name: activityJson["name"] as! String)
+            activity.address = activityJson["address"] as! String
+            activity.image        = activityJson["img"]              as! String
+            activity.logo         = activityJson["logo_img"]         as! String
+            activity.description  = activityJson["description_es"]   as! String
+            activity.openingHours = activityJson["opening_hours_es"] as! String
+            activity.latitude     = (activityJson["gps_lat"]          as! String).floatValue
+            activity.longitude    = (activityJson["gps_lon"]          as! String).floatValue
+            
+            activities.add(activity: activity)
+        
+        }
+    } catch {
+        print("Error parsing JSON")
+    }
+    
+    return activities
 }

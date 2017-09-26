@@ -8,8 +8,9 @@
 
 import Foundation
 import MapKit
-extension MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+extension ViewController {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKPinAnnotationView? {
         // Don't want to show a custom image if the annotation is the user's location.
         guard !(annotation is MKUserLocation) else {
             return nil
@@ -18,13 +19,13 @@ extension MKMapViewDelegate {
         // Better to make this class property
         let annotationIdentifier = "AnnotationIdentifier"
         
-        var annotationView: MKAnnotationView?
+        var annotationView: MKPinAnnotationView?
         if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
-            annotationView = dequeuedAnnotationView
+            annotationView = (dequeuedAnnotationView as! MKPinAnnotationView)
             annotationView?.annotation = annotation
         }
         else {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         
