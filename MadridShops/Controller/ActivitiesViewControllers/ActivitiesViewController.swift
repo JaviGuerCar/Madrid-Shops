@@ -39,33 +39,12 @@ class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKM
         let reg = self.mapView.regionThatFits(region)
         self.mapView.setRegion(reg, animated: true)
         
-        ActivitiesExecuteOnceInteractorImpl().execute(firstTimeClosure: {
-            initializeData()
-        }) {
-            self.activitiesCollectionView.delegate = self
-            self.activitiesCollectionView.dataSource = self
-            self.annotationPins()
-        }
+        self.activitiesCollectionView.delegate = self
+        self.activitiesCollectionView.dataSource = self
+        self.annotationPins()
+        
     }
     
-    func initializeData() {
-        let downloadActivitiesInteractor: DownloadAllActivitiesInteractor = DownloadAllActivitiesInteractorNSURLSessionImpl()
-        
-        //Download and Save
-        downloadActivitiesInteractor.execute { (activities: Activities) in
-            print("Acivity: " + activities.get(index: 0).name)
-            
-            // Save
-            let cacheInteractor = SaveAllActivitiesInteractorImpl()
-            cacheInteractor.execute(activities: activities, context: self.context, onSuccess: { (activities: Activities) in
-                
-                ActivitiesSetExecutedOnceInteractorImpl().execute()
-                self.activitiesCollectionView.delegate = self
-                self.activitiesCollectionView.dataSource = self
-                self.annotationPins()
-            })
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Compruebo si el ID del segue es el del Storyboard

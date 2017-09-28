@@ -30,15 +30,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
-        // Ejecuto el Interactor y la primera o segunda clausura según corresponda
-        ExecuteOnceInteractorImpl().execute(firstTimeClosure: {
-            initializeData()
-        }) {
-            self.shopsCollectionView.delegate = self
-            self.shopsCollectionView.dataSource = self
-            self.annotationPins()
-        }
-        
         // Centro el mapa
         let madridLocation = CLLocation(latitude: 40.41889, longitude: -3.69194)
         self.map.setCenter(madridLocation.coordinate, animated: true)
@@ -47,37 +38,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let reg = self.map.regionThatFits(region)
         self.map.setRegion(reg, animated: true)
         
+        self.shopsCollectionView.delegate = self
+        self.shopsCollectionView.dataSource = self
+        self.annotationPins()
         
-    }
-    
-    // Función de descarga de los datos
-    func initializeData() {
-        let downloadShopsInteractor: DownloadAllShopsInteractor = DownloadAllShopsinteractorNSURLSessionImpl()
-        
-        downloadShopsInteractor.execute{ (shops: Shops) in
-            // OK
-            print("Name: " + shops.get(index: 0).name)
-            //self.shops = shops
-            
-            // Despues de descargarlo lo salvo en BD con CoreData
-            let cacheInteractor = SaveAllShopsInteractorImpl()
-            cacheInteractor.execute(shops: shops, context: self.context
-                , onSuccess: { (shops: Shops) in
-                    
-                    // Marco si se que ya se ha descargado una vez
-                    SetExecutedOnceInteractorImpl().execute()
-                    
-                    // asigno delegado aqui que es donde guardo las tiendas
-                    // sino no mostraría nada porque no hay tiendas
-                    self._fetchedResultsController = nil
-                    self.shopsCollectionView.delegate = self
-                    self.shopsCollectionView.dataSource = self
-                    // Recargamos los datos
-                    self.shopsCollectionView.reloadData()
-                    // Cargamos los mapas
-                    self.annotationPins()
-            })
-        }
     }
 
     // Segue a mano

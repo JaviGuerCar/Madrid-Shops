@@ -10,8 +10,6 @@
 		5D087A1F1F67125900ABE044 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 5D087A1E1F67125900ABE044 /* Podfile */; };
 		5D087A211F671DFF00ABE044 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D087A201F671DFF00ABE044 /* MainViewController.swift */; };
 		5D087A231F673CA100ABE044 /* DownloadAllShopInteractorNSOpImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D087A221F673CA100ABE044 /* DownloadAllShopInteractorNSOpImpl.swift */; };
-		5D12392D1F7C545D0027D07A /* ActivitiesExecuteOnceInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D12392C1F7C545D0027D07A /* ActivitiesExecuteOnceInteractorImpl.swift */; };
-		5D12392F1F7C54E80027D07A /* ActivitiesSetExecutedOnceInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D12392E1F7C54E80027D07A /* ActivitiesSetExecutedOnceInteractorImpl.swift */; };
 		5D1239311F7C5B250027D07A /* ActivitiesViewController+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1239301F7C5B250027D07A /* ActivitiesViewController+Map.swift */; };
 		5D2CAB9C1F69A67300EB266D /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CAB9B1F69A67300EB266D /* JsonParser.swift */; };
 		5D45D18E1F79A3DE003D98BA /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45D18D1F79A3DE003D98BA /* ActivityDetailViewController.swift */; };
@@ -77,8 +75,6 @@
 		5D087A1E1F67125900ABE044 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5D087A201F671DFF00ABE044 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5D087A221F673CA100ABE044 /* DownloadAllShopInteractorNSOpImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAllShopInteractorNSOpImpl.swift; sourceTree = "<group>"; };
-		5D12392C1F7C545D0027D07A /* ActivitiesExecuteOnceInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesExecuteOnceInteractorImpl.swift; sourceTree = "<group>"; };
-		5D12392E1F7C54E80027D07A /* ActivitiesSetExecutedOnceInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesSetExecutedOnceInteractorImpl.swift; sourceTree = "<group>"; };
 		5D1239301F7C5B250027D07A /* ActivitiesViewController+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivitiesViewController+Map.swift"; sourceTree = "<group>"; };
 		5D1239321F7C702C0027D07A /* Madrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Madrid.jpg; sourceTree = "<group>"; };
 		5D2CAB9B1F69A67300EB266D /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
@@ -335,10 +331,8 @@
 			children = (
 				5D99DA1D1F70615100E256AD /* ExecuteOnceInteractor.swift */,
 				5D99DA231F7069AF00E256AD /* ExecuteOnceInteractorImpl.swift */,
-				5D12392C1F7C545D0027D07A /* ActivitiesExecuteOnceInteractorImpl.swift */,
 				5D99DA1F1F7061EE00E256AD /* SetExecutedOnceInteractor.swift */,
 				5D99DA211F7068D000E256AD /* SetExecutedOnceInteractorImpl.swift */,
-				5D12392E1F7C54E80027D07A /* ActivitiesSetExecutedOnceInteractorImpl.swift */,
 				5D6F58821F7714AD00C71CB4 /* ActivitiesInteractor */,
 				5D6F58811F77144F00C71CB4 /* ShopsInteractor */,
 			);
@@ -554,7 +548,6 @@
 				5DF172A21F61FA250044D7AE /* CollectionViewShopCell.swift in Sources */,
 				5D99DA1E1F70615100E256AD /* ExecuteOnceInteractor.swift in Sources */,
 				5D7DCF1E1F763A0B006CE98D /* String+Float.swift in Sources */,
-				5D12392D1F7C545D0027D07A /* ActivitiesExecuteOnceInteractorImpl.swift in Sources */,
 				5D6F588C1F781C5100C71CB4 /* CollectionViewActivityCell.swift in Sources */,
 				5D7273E51F69AAEA009A72C8 /* DownloadAllShopsinteractorNSURLSessionImpl.swift in Sources */,
 				5D52CDA11F6DA8460092ED51 /* SaveAllShopsInteractorImpl.swift in Sources */,
@@ -571,7 +564,6 @@
 				5D88181B1F61D007000E5C91 /* AppDelegate.swift in Sources */,
 				5DF172A01F61F6EA0044D7AE /* ViewController+CollectionViewController.swift in Sources */,
 				5D087A231F673CA100ABE044 /* DownloadAllShopInteractorNSOpImpl.swift in Sources */,
-				5D12392F1F7C54E80027D07A /* ActivitiesSetExecutedOnceInteractorImpl.swift in Sources */,
 				5D99DA241F7069AF00E256AD /* ExecuteOnceInteractorImpl.swift in Sources */,
 				5DF172991F61E9CB0044D7AE /* Typealias.swift in Sources */,
 				5D7273E71F69F068009A72C8 /* ShopDetailViewController.swift in Sources */,

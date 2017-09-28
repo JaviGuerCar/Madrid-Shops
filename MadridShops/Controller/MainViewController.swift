@@ -17,8 +17,49 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.loadAppData()
     }
+    
+    func loadAppData() {
+        ExecuteOnceInteractorImpl().execute(firstTimeClosure: {
+            initializeShopsData()
+        }) {
+            // SecondTimeCLosure
+        }
+    }
+    
+    func initializeShopsData() {
+        let downloadShopsInteractor: DownloadAllShopsInteractor = DownloadAllShopsinteractorNSURLSessionImpl()
+        
+        //Download and Save
+        downloadShopsInteractor.execute { (shops: Shops) in
+            print("Name: " + shops.get(index: 0).name)
+            
+            // Save
+            let cacheInteractor = SaveAllShopsInteractorImpl()
+            cacheInteractor.execute(shops: shops, context: self.context, onSuccess: { (shops: Shops) in
+                
+                self.initializeActivitiesData()
+            })
+        }
+    }
+    
+    func initializeActivitiesData() {
+        let downloadActivitiesInteractor: DownloadAllActivitiesInteractor = DownloadAllActivitiesInteractorNSURLSessionImpl()
+        
+        //Download and Save
+        downloadActivitiesInteractor.execute { (activities: Activities) in
+            print("Acivity: " + activities.get(index: 0).name)
+            
+            // Save
+            let cacheInteractor = SaveAllActivitiesInteractorImpl()
+            cacheInteractor.execute(activities: activities, context: self.context, onSuccess: { (activities: Activities) in
+                SetExecutedOnceInteractorImpl().execute()
+            })
+        }
+    }
+
+
     
     // El MainViewController mira el segue y en la función prepare
     // le pasamos el contexto al siguiente VC
