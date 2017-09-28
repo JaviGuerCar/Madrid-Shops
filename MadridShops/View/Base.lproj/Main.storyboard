@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,25 +36,74 @@
                     <view key="view" contentMode="scaleToFill" id="F7S-zS-xv7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Madrid.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="F3R-LZ-ZY6">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="YbY-hW-Lcq"/>
+                                    <constraint firstAttribute="height" constant="672" id="kcq-59-lpB"/>
+                                    <constraint firstAttribute="width" constant="414" id="rOH-Rg-9wJ"/>
+                                    <constraint firstAttribute="height" constant="672" id="xph-Oq-buS"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G73-kV-MD0">
+                                <rect key="frame" x="233" y="160" width="129" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="shops_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowShopsSegue" id="hvg-iJ-UHH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MADRID SHOPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fj-sa-EfD">
+                                <rect key="frame" x="20" y="100" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a79-jf-H6S">
+                                <rect key="frame" x="54" y="160" width="129" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="activities_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="aAt-pM-H5M" kind="show" identifier="ShowActivitiesSegue" id="IGd-30-ghc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="centerX" secondItem="9fj-sa-EfD" secondAttribute="centerX" id="05X-CX-U7C"/>
+                            <constraint firstAttribute="trailing" secondItem="F3R-LZ-ZY6" secondAttribute="trailing" id="0oQ-rF-gXc"/>
+                            <constraint firstAttribute="bottom" secondItem="F3R-LZ-ZY6" secondAttribute="bottom" id="6hs-Lg-0af"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="trailing" secondItem="3ib-PN-Qu0" secondAttribute="trailing" id="9vN-dA-ttQ"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" id="DmQ-sR-g1Z"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" id="OZ0-YY-0dN"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="bottom" secondItem="3ib-PN-Qu0" secondAttribute="bottom" id="SVn-w6-2ii"/>
+                            <constraint firstItem="9fj-sa-EfD" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" constant="36" id="aAB-Mw-Bft"/>
+                            <constraint firstItem="9fj-sa-EfD" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" constant="20" id="gzH-gJ-Jd5"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="F7S-zS-xv7" secondAttribute="leading" id="jo4-4A-L2k"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="bottom" secondItem="F7S-zS-xv7" secondAttribute="bottomMargin" id="lEz-Qb-aLu"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="centerX" secondItem="F7S-zS-xv7" secondAttribute="centerX" id="mm1-vz-tAN"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="F7S-zS-xv7" secondAttribute="leading" id="mnB-bt-rJq"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="bottom" secondItem="3ib-PN-Qu0" secondAttribute="bottom" id="sII-mS-2H1"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="F7S-zS-xv7" secondAttribute="top" constant="64" id="sOR-6F-XYJ"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="F7S-zS-xv7" secondAttribute="topMargin" id="wBL-j7-6Wc"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="trailing" secondItem="9fj-sa-EfD" secondAttribute="trailing" constant="20" id="wh7-WQ-2rD"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="F7S-zS-xv7" secondAttribute="top" constant="64" id="x3b-Mj-pv4"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="F7S-zS-xv7" secondAttribute="leading" id="xI7-BD-fCh"/>
+                            <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" id="yMN-TM-oeR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3ib-PN-Qu0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="¡MAD!" id="bhX-7a-7x7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="G4a-ER-4BA">
-                            <connections>
-                                <segue destination="aAt-pM-H5M" kind="show" id="aU5-9p-hn3"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="8ml-ap-b9Z">
-                            <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" identifier="ShowShopsSegue" id="iBI-kD-Qi7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="¡MAD!" id="bhX-7a-7x7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gn-AB-HtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295" y="134"/>
+            <point key="canvasLocation" x="-295.6521739130435" y="133.69565217391306"/>
         </scene>
         <!--Activities-->
         <scene sceneID="dUM-g0-dJ3">
@@ -121,6 +171,7 @@
                     <navigationItem key="navigationItem" title="Activities" id="Hjq-zK-Pyl"/>
                     <connections>
                         <outlet property="activitiesCollectionView" destination="yx7-Lh-Tl7" id="rKy-Vo-QLH"/>
+                        <outlet property="mapView" destination="OIa-K3-OQJ" id="dqk-Ae-R6j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLr-pC-zGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,4 +361,9 @@
             <point key="canvasLocation" x="1244.9275362318842" y="132.88043478260872"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Madrid.jpg" width="692" height="1024"/>
+        <image name="activities_icon" width="196" height="244"/>
+        <image name="shops_icon" width="197" height="247"/>
+    </resources>
 </document>

@@ -26,6 +26,9 @@ class MainViewController: UIViewController {
         if segue.identifier == "ShowShopsSegue" {
             let vc = segue.destination as! ViewController
             vc.context = self.context
+        } else{
+            let vc = segue.destination as! ActivitiesViewController
+            vc.context = self.context
         }
     }
 

@@ -17,7 +17,7 @@ class SaveAllShopsInteractorImpl: SaveAllShopsInteractor {
         for i in 0 ..< shops.count() {
             let shop = shops.get(index: i)
             
-            // Mapping Shop into ShopsCD with funcion mapShopIntoShopCD
+            // Mapping Shop into ShopsCD with function mapShopIntoShopCD
             let _ = mapShopIntoShopCD(context: context, shop: shop)
             
         }

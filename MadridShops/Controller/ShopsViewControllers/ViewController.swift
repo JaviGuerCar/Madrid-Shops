@@ -59,7 +59,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             print("Name: " + shops.get(index: 0).name)
             //self.shops = shops
             
-            
             // Despues de descargarlo lo salvo en BD con CoreData
             let cacheInteractor = SaveAllShopsInteractorImpl()
             cacheInteractor.execute(shops: shops, context: self.context
@@ -104,8 +103,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             //let indexPath = self.shopsCollectionView.indexPathsForSelectedItems![0]
             //let selectedShop = self.shops?.get(index: indexPath.row)
             
-            // Injecto la tienda (Inyeccion dependencias) a través de una propiedad
-            // creada en el ShopDetailViewController, llamada "shop"
+            // Injecto la tienda (Inyeccion dependencias) a través de una propiedad creada en el ShopDetailViewController, llamada "shop"
             // vc.shop = selectedShop
             let shopCD: ShopCD = sender as! ShopCD
             vc.shop = mapShopCDIntoShop(shopCD: shopCD)
@@ -169,7 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
         self.map.addAnnotations(locationList!)
 
-        }
+    }
 
 }
 
