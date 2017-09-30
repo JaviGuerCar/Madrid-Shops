@@ -18,7 +18,8 @@ func mapActivityCDIntoActivity(activityCD: ActivityCD) -> Activity {
     activity.latitude = activityCD.latitude
     activity.longitude = activityCD.longitude
     activity.openingHours = activityCD.openingHours ?? ""
-    activity.description = activityCD.description_es ?? ""
+    activity.description_es = activityCD.description_es ?? ""
+    activity.description_en = activityCD.description_en ?? ""
     
     return activity
 }
@@ -33,7 +34,8 @@ func mapActivityIntoActivityCD(context: NSManagedObjectContext, activity: Activi
     activityCD.logo = activity.logo
     activityCD.latitude = activity.latitude ?? 0.0
     activityCD.longitude = activity.longitude ?? 0.0
-    activityCD.description_es = activity.description
+    activityCD.description_es = activity.description_es
+    activityCD.description_en = activity.description_en
     activityCD.openingHours = activity.openingHours
     
     return activityCD

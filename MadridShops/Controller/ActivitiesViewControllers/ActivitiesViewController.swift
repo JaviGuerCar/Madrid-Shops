@@ -107,7 +107,7 @@ class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKM
                 if let longitude: CLLocationDegrees = Double(item.longitude),
                     let latitude: CLLocationDegrees = Double(item.latitude){
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    let mapPin: MapPin = MapPin(coordinate: coordinate, title: item.name!, subtitle: item.address!)
+                    let mapPin: MapPin = MapPin(coordinate: coordinate, title: item.name!, subtitle: item.address!, logo: item.logo!)
                     self.locationList?.append(mapPin)
                     
                 }

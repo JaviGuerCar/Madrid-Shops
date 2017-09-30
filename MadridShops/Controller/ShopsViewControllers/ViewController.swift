@@ -15,6 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     var context: NSManagedObjectContext!
     var locationList: [MapPin]?
+    var shop: Shop?
 
     @IBOutlet weak var shopsCollectionView: UICollectionView!
     @IBOutlet weak var map: MKMapView!
@@ -22,6 +23,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let language = Locale.current.regionCode!
+        print (language)
         
         self.map.delegate = self
         
@@ -34,13 +38,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let madridLocation = CLLocation(latitude: 40.41889, longitude: -3.69194)
         self.map.setCenter(madridLocation.coordinate, animated: true)
         
-        let region = MKCoordinateRegion(center: madridLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let region = MKCoordinateRegion(center: madridLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
         let reg = self.map.regionThatFits(region)
         self.map.setRegion(reg, animated: true)
         
         self.shopsCollectionView.delegate = self
         self.shopsCollectionView.dataSource = self
-        self.annotationPins()
+        //self.annotationPins()
         
     }
 
@@ -112,6 +116,66 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return _fetchedResultsController!
     }
     
+    
+    // Delegate method
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        //print("Finish rendering")
+        self.annotationPins()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Don't want to show a custom image if the annotation is the user's location.
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+//        if let annotation = annotation as? MapPin {
+//
+//        }
+        // Better to make this class property
+        let annotationIdentifier = "AnnotationIdentifier"
+        
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+        }
+        
+        if let annotationView = annotationView {
+            // Configure your annotation view here
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "mapicon")
+//                        let logoItems = fetchedResultsController.fetchedObjects
+//                        for items in logoItems! {
+//                            if let logoURL = items.logo {
+//                                if let url = URL(string: logoURL),
+//                                    let data = NSData(contentsOf: url) {
+//                                    let image = UIImage(data: data as Data)
+//            
+//                                    annotationView.rightCalloutAccessoryView = UIImageView(image: image)
+//            
+//                                }
+//                            }
+//                        }
+            annotationView.rightCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "shop_icon_2"))
+
+            
+//            if let d: Data = annotationView.data{
+//                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: annotationView.frame.height, height: annotationView.frame.height))
+//                imageView.image = UIImage(data: d)
+//                imageView.contentMode = .scaleAspectFit
+//                annotationView.leftCalloutAccessoryView = imageView
+//            }
+        }
+        
+        return annotationView
+    }
+    
+    
+    
     // Función para pintar las anotations
     func annotationPins() {
         self.locationList = [MapPin]() // Creo un array de MapPin
@@ -122,7 +186,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if let longitude: CLLocationDegrees = Double(item.longitude),
                     let latitude: CLLocationDegrees = Double(item.latitude){
                         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        let mapPin: MapPin = MapPin(coordinate: coordinate, title: item.name!, subtitle: item.address!)
+                    let mapPin: MapPin = MapPin(coordinate: coordinate, title: item.name!, subtitle: item.address!, logo: item.logo!)
                         self.locationList?.append(mapPin)
 
                 }

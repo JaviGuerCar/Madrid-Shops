@@ -9,9 +9,20 @@
 import Foundation
 
 public class Activity {
+    
+    // Get Language
+    var description: String {
+        if Locale.current.regionCode! == "ES" {
+            return self.description_es
+        } else {
+            return self.description_en
+        }
+    }
+    
     // variables que necesito
     var name: String
-    var description: String = ""
+    var description_es: String = ""
+    var description_en: String = ""
     var latitude: Float? = nil
     var longitude: Float? = nil
     var image: String = ""

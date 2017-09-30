@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CollectionViewShopCell: UICollectionViewCell {
     
@@ -22,6 +23,10 @@ class CollectionViewShopCell: UICollectionViewCell {
         
         self.label.text = shop.name
         self.shop?.logo.loadImage(into: imageView)
+        
+        imageView.sd_addActivityIndicator()
+        imageView.sd_setIndicatorStyle(.gray)
+        
         imageView.clipsToBounds = true
         self.imageView.layer.cornerRadius = 10
         

@@ -10,5 +10,5 @@ import Foundation
 
 // este protocolo lo hacemos para que sólo se descargue una vez los datos
 protocol ExecuteOnceInteractor {
-    func execute(firstTimeClosure: () -> Void, SecondTimeClosure: () -> Void)
+    func execute(firstTimeClosure: () -> Void)
 }

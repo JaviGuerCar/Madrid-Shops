@@ -21,6 +21,10 @@ class CollectionViewActivityCell: UICollectionViewCell {
         // Paint cell
         self.label.text = activity.name
         self.activity?.logo.loadImage(into: imageView)
+        
+        imageView.sd_addActivityIndicator()
+        imageView.sd_setIndicatorStyle(.gray)
+        
         imageView.clipsToBounds = true
         self.imageView.layer.cornerRadius = 10
         

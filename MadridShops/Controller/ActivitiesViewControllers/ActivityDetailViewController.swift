@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ActivityDetailViewController: UIViewController {
     
@@ -22,6 +23,9 @@ class ActivityDetailViewController: UIViewController {
         self.title = self.activity?.name
         self.activityDetailDescription.text = self.activity?.description
         self.activity?.image.loadImage(into: activityImage)
+        
+        activityImage.sd_addActivityIndicator()
+        activityImage.sd_setIndicatorStyle(.gray)
 
     }
 

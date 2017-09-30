@@ -16,21 +16,8 @@ func mapShopCDIntoShop(shopCD: ShopCD) -> Shop {
     shop.logo = shopCD.logo ?? ""
     shop.latitude = shopCD.latitude
     shop.longitude = shopCD.longitude
-    
-    // Esto lo podría hacer de tres maneras
-    // 1: Con If-Else de toda la vida
-//    if let desc = shopCD.description_es {
-//        shop.description = desc
-//    }else{
-//        shop.description = ""
-//    }
-    
-    // 2 - Igual que el if pero más sucinto
-    shop.description = shopCD.description_es ?? ""
-    
-    // 3 - Este es peligroso 
-    //shop.description = shopCD.description_es!
-    
+    shop.description_es = shopCD.description_es ?? ""
+    shop.description_en = shopCD.description_en ?? ""
     shop.openingHours = shopCD.openingHours ?? ""
     
     return shop
@@ -46,7 +33,8 @@ func mapShopIntoShopCD(context: NSManagedObjectContext, shop: Shop) -> ShopCD {
     shopCD.logo = shop.logo
     shopCD.latitude = shop.latitude ?? 0.0
     shopCD.longitude = shop.longitude ?? 0.0
-    shopCD.description_es = shop.description
+    shopCD.description_es = shop.description_es
+    shopCD.description_en = shop.description_en
     shopCD.openingHours = shop.openingHours
     
     return shopCD

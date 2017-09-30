@@ -8,26 +8,46 @@
 
 import UIKit
 import CoreData
-// Importamos la librería DotsLoading
-import FillableLoaders
+import SystemConfiguration
 
 class MainViewController: UIViewController {
     
     var context: NSManagedObjectContext!
+
+    @IBOutlet weak var OverView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.OverView.isHidden = true
+        self.loadingLabel.isHidden = true
         self.loadAppData()
+        
     }
+
     
+    // Load Data
     func loadAppData() {
-        ExecuteOnceInteractorImpl().execute(firstTimeClosure: {
-            initializeShopsData()
-        }) {
-            // SecondTimeCLosure
-        }
+        ExecuteOnceInteractorImpl().execute(firstTimeClosure:{
+            if CheckConnection.isInternetAvailable() {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+                self.OverView.isHidden = false
+                self.loadingLabel.isHidden = false
+                self.initializeShopsData()
+            } else {
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                self.OverView.isHidden = true
+                self.loadingLabel.isHidden = true
+                self.showAlert()
+            }
+        })
     }
     
+    // Initialize Shops Data
     func initializeShopsData() {
         let downloadShopsInteractor: DownloadAllShopsInteractor = DownloadAllShopsinteractorNSURLSessionImpl()
         
@@ -44,6 +64,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    // Initialize Activities Data
     func initializeActivitiesData() {
         let downloadActivitiesInteractor: DownloadAllActivitiesInteractor = DownloadAllActivitiesInteractorNSURLSessionImpl()
         
@@ -55,10 +76,12 @@ class MainViewController: UIViewController {
             let cacheInteractor = SaveAllActivitiesInteractorImpl()
             cacheInteractor.execute(activities: activities, context: self.context, onSuccess: { (activities: Activities) in
                 SetExecutedOnceInteractorImpl().execute()
+                self.activityIndicator.stopAnimating()
+                self.OverView.isHidden = true
+                self.loadingLabel.isHidden = true
             })
         }
     }
-
 
     
     // El MainViewController mira el segue y en la función prepare
@@ -71,6 +94,25 @@ class MainViewController: UIViewController {
             let vc = segue.destination as! ActivitiesViewController
             vc.context = self.context
         }
+    }
+    
+    
+    
+    // Alert if no connection
+    func showAlert() {
+        let alert = UIAlertController(title: "No hay conexión de red", message: "No se puede establecer conexión con la red. Verifica la conexión y vuelve a intentarlo", preferredStyle: UIAlertControllerStyle.alert)
+        //alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default, handler: nil))
+        
+        let retry = UIAlertAction(title: "Retry", style: .default) { (alertAction) in
+            self.loadAppData()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (cancelAction) in }
+        
+        alert.addAction(retry)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 
 
