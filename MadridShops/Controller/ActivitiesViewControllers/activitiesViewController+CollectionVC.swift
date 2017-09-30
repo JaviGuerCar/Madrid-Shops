@@ -27,7 +27,7 @@ extension ActivitiesViewController: UICollectionViewDataSource, UICollectionView
         //let activity: Activity = (self.activities?.get(index: indexPath.row))!
         let activityCD: ActivityCD = fetchedResultsController.object(at: indexPath)
         
-        cell.refresh(activity: mapActivityCDIntoActivity(activityCD: activityCD))
+        cell.refresh(activityCD: activityCD)
         
         return cell
         

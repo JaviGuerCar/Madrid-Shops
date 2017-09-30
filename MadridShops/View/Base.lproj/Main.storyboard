@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLr-pC-zGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463.768115942029" y="836.41304347826099"/>
+            <point key="canvasLocation" x="464" y="1065"/>
         </scene>
         <!--Activity Detail View Controller-->
         <scene sceneID="Lgi-1e-oBY">
@@ -235,12 +235,12 @@
                     </view>
                     <connections>
                         <outlet property="activityDetailDescription" destination="hoq-a7-AOM" id="olX-Ub-RMf"/>
-                        <outlet property="activityImage" destination="cDH-Cp-nnY" id="6Lj-2r-xrk"/>
+                        <outlet property="mapImage" destination="cDH-Cp-nnY" id="Ypu-RQ-33g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOo-JW-N3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244.9275362318842" y="835.59782608695662"/>
+            <point key="canvasLocation" x="1245" y="1065"/>
         </scene>
         <!--Shops-->
         <scene sceneID="tne-QT-ifu">
@@ -325,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PbI-gU-HKG">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="1005"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YRS-Pd-opy">
@@ -376,9 +376,9 @@
                         <viewLayoutGuide key="safeArea" id="ipQ-ZD-hSf"/>
                     </view>
                     <connections>
+                        <outlet property="mapImage" destination="YRS-Pd-opy" id="yg6-9l-npJ"/>
                         <outlet property="shopAddress" destination="MWP-nF-Bm9" id="a3X-FI-nPa"/>
                         <outlet property="shopDetailDescription" destination="rQf-78-ECL" id="01R-Lo-2Mu"/>
-                        <outlet property="shopImage" destination="YRS-Pd-opy" id="pKp-wc-QSS"/>
                         <outlet property="shopOpeningHour" destination="J17-UT-O4F" id="cGx-ie-coO"/>
                     </connections>
                 </viewController>

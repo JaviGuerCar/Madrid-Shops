@@ -11,22 +11,24 @@ import SDWebImage
 
 class ActivityDetailViewController: UIViewController {
     
-    var activity: Activity?
+    var activityCD: ActivityCD?
     
     @IBOutlet weak var activityDetailDescription: UITextView!
+    @IBOutlet weak var mapImage: UIImageView!
     
-    @IBOutlet weak var activityImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.activity?.name
-        self.activityDetailDescription.text = self.activity?.description
-        self.activity?.image.loadImage(into: activityImage)
-        
-        activityImage.sd_addActivityIndicator()
-        activityImage.sd_setIndicatorStyle(.gray)
+        self.title = self.activityCD?.name
+        self.activityDetailDescription.text = self.activityCD?.description_en
 
+        if let staticMap = activityCD?.mapCache {
+            self.mapImage.image = UIImage(data: staticMap)
+        } else {
+            self.mapImage.image = UIImage(named: "noImage.png")
+        }
+        
     }
 
 

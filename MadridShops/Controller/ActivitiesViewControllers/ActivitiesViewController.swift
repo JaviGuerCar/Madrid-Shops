@@ -55,7 +55,7 @@ class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKM
             
             //let activity = self.activities?.get(index: indexPath.row)
             let activityCD: ActivityCD = fetchedResultsController.object(at: indexPath)
-            vc.activity = mapActivityCDIntoActivity(activityCD: activityCD)
+            vc.activityCD = activityCD
         }
     }
     

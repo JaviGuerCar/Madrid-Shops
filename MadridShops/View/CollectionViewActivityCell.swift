@@ -10,23 +10,22 @@ import UIKit
 
 class CollectionViewActivityCell: UICollectionViewCell {
     
-    var activity: Activity?
+    var activityCD: ActivityCD?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
-    func refresh(activity: Activity){
-        self.activity = activity
+    func refresh(activityCD: ActivityCD){
+        self.activityCD = activityCD
         
         // Paint cell
-        self.label.text = activity.name
-        self.activity?.logo.loadImage(into: imageView)
+        self.label.text = activityCD.name
         
-        imageView.sd_addActivityIndicator()
-        imageView.sd_setIndicatorStyle(.gray)
-        
-        imageView.clipsToBounds = true
-        self.imageView.layer.cornerRadius = 10
+        if let logoImage = activityCD.logoCache {
+            self.imageView.image = UIImage(data: logoImage)
+        }else{
+            self.imageView.image = UIImage(named: "noImage.png")
+        }
         
     }
     

@@ -14,26 +14,22 @@ class CollectionViewShopCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
+    // necesito una shopCD
+    var shopCD: ShopCD?
     
-    // necesito una shop
-    var shop: Shop?
-    
-    func refresh(shop: Shop){
-        self.shop = shop
+    func refresh(shopCD: ShopCD){
+        self.shopCD = shopCD
         
-        self.label.text = shop.name
-        self.shop?.logo.loadImage(into: imageView)
-        
-        imageView.sd_addActivityIndicator()
-        imageView.sd_setIndicatorStyle(.gray)
+        self.label.text = shopCD.name
+
+        if let logoImage = shopCD.logoCache {
+            self.imageView.image = UIImage(data: logoImage)
+        }else{
+            self.imageView.image = UIImage(named: "noImage.png")
+        }
         
         imageView.clipsToBounds = true
         self.imageView.layer.cornerRadius = 10
-        
-//        UIView.animate(withDuration: 1.0){
-//            self.imageView.layer.cornerRadius = 30
-//        }
-        
         
     }
 }

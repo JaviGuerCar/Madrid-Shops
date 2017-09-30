@@ -11,13 +11,21 @@ import Foundation
 public class Shop {
     
     // Get Language
-    var description: String {
-        if Locale.current.regionCode! == "ES" {
-            return self.description_es
-        } else {
-            return self.description_en
-        }
-    }
+//    var description: String {
+//        if Locale.current.regionCode! == "ES" {
+//            return self.description_es
+//        } else {
+//            return self.description_en
+//        }
+//    }
+//    
+//    var openingHours: String {
+//        if Locale.current.regionCode! == "ES" {
+//            return self.openingHours_es
+//        } else {
+//            return self.openingHours_en
+//        }
+//    }
     
     // variables que necesito
     var name: String
@@ -27,8 +35,10 @@ public class Shop {
     var longitude: Float? = nil
     var image: String = ""
     var logo: String = ""
-    var openingHours: String = ""
+    var openingHours_es: String = ""
+    var openingHours_en: String = ""
     var address: String = ""
+    var url: String = ""
  
     public init(name: String) {
         self.name = name

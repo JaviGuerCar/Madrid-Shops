@@ -17,8 +17,7 @@ func mapActivityCDIntoActivity(activityCD: ActivityCD) -> Activity {
     activity.logo = activityCD.logo ?? ""
     activity.latitude = activityCD.latitude
     activity.longitude = activityCD.longitude
-    activity.openingHours = activityCD.openingHours ?? ""
-    activity.description_es = activityCD.description_es ?? ""
+    activity.openingHours_en = activityCD.openingHours ?? ""
     activity.description_en = activityCD.description_en ?? ""
     
     return activity
@@ -26,6 +25,7 @@ func mapActivityCDIntoActivity(activityCD: ActivityCD) -> Activity {
 
 // Necesito inyecarle un contexto como parámetro
 func mapActivityIntoActivityCD(context: NSManagedObjectContext, activity: Activity) -> ActivityCD {
+    
     // Mapping Shop into ShopsCD
     let activityCD = ActivityCD(context: context)
     activityCD.name = activity.name
@@ -34,9 +34,11 @@ func mapActivityIntoActivityCD(context: NSManagedObjectContext, activity: Activi
     activityCD.logo = activity.logo
     activityCD.latitude = activity.latitude ?? 0.0
     activityCD.longitude = activity.longitude ?? 0.0
-    activityCD.description_es = activity.description_es
     activityCD.description_en = activity.description_en
-    activityCD.openingHours = activity.openingHours
-    
+    activityCD.openingHours = activity.openingHours_en
+    activityCD.imageCache = LoadUrlImage(url: activity.image)
+    activityCD.logoCache = LoadUrlImage(url: activity.logo)
+    activityCD.mapCache = LoadUrlImage(url: "https://maps.googleapis.com/maps/api/staticmap?center=\(activity.latitude!),\(activity.longitude!)&zoom=17&size=320x220&markers=color:green%7C\(activity.latitude!),\(activity.longitude!)")
+
     return activityCD
 }

@@ -28,7 +28,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let shopCD: ShopCD = fetchedResultsController.object(at: indexPath)
         
         // Para convertirlo a objeto CD, pues le paso la función para Mapear
-        cell.refresh(shop: mapShopCDIntoShop(shopCD: shopCD))
+        cell.refresh(shopCD: shopCD)
         
         return cell
         

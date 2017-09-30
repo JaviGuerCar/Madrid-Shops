@@ -42,6 +42,7 @@
 		5D99DA201F7061EE00E256AD /* SetExecutedOnceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99DA1F1F7061EE00E256AD /* SetExecutedOnceInteractor.swift */; };
 		5D99DA221F7068D000E256AD /* SetExecutedOnceInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99DA211F7068D000E256AD /* SetExecutedOnceInteractorImpl.swift */; };
 		5D99DA241F7069AF00E256AD /* ExecuteOnceInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99DA231F7069AF00E256AD /* ExecuteOnceInteractorImpl.swift */; };
+		5DAE57541F7FFB1100EF3771 /* LoadUrlImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE57531F7FFB1100EF3771 /* LoadUrlImage.swift */; };
 		5DD104681F7E4F2100FA7EAD /* CheckConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104671F7E4F2100FA7EAD /* CheckConnection.swift */; };
 		5DD508B71F7B1603001233FC /* SaveAllActivitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD508B61F7B1603001233FC /* SaveAllActivitiesInteractor.swift */; };
 		5DD508B91F7B16C3001233FC /* SaveAllActivitiesInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD508B81F7B16C3001233FC /* SaveAllActivitiesInteractorImpl.swift */; };
@@ -112,6 +113,8 @@
 		5D99DA1F1F7061EE00E256AD /* SetExecutedOnceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExecutedOnceInteractor.swift; sourceTree = "<group>"; };
 		5D99DA211F7068D000E256AD /* SetExecutedOnceInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExecutedOnceInteractorImpl.swift; sourceTree = "<group>"; };
 		5D99DA231F7069AF00E256AD /* ExecuteOnceInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteOnceInteractorImpl.swift; sourceTree = "<group>"; };
+		5DAE57531F7FFB1100EF3771 /* LoadUrlImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUrlImage.swift; sourceTree = "<group>"; };
+		5DAE57551F800FE800EF3771 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		5DC00CCF1F7D034B00A0DA3C /* shops_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shops_icon.png; sourceTree = "<group>"; };
 		5DC00CD01F7D035200A0DA3C /* activities_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activities_icon.png; sourceTree = "<group>"; };
 		5DD104671F7E4F2100FA7EAD /* CheckConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckConnection.swift; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 		5D1239331F7C715B0027D07A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5DAE57551F800FE800EF3771 /* noImage.png */,
 				5DC00CD01F7D035200A0DA3C /* activities_icon.png */,
 				5DC00CCF1F7D034B00A0DA3C /* shops_icon.png */,
 				5D1239321F7C702C0027D07A /* Madrid.jpg */,
@@ -363,6 +367,7 @@
 				5D7DCF191F74223A006CE98D /* MapPin.swift */,
 				5D7DCF1D1F763A0B006CE98D /* String+Float.swift */,
 				5DD104671F7E4F2100FA7EAD /* CheckConnection.swift */,
+				5DAE57531F7FFB1100EF3771 /* LoadUrlImage.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 				5D087A231F673CA100ABE044 /* DownloadAllShopInteractorNSOpImpl.swift in Sources */,
 				5D99DA241F7069AF00E256AD /* ExecuteOnceInteractorImpl.swift in Sources */,
 				5DF172991F61E9CB0044D7AE /* Typealias.swift in Sources */,
+				5DAE57541F7FFB1100EF3771 /* LoadUrlImage.swift in Sources */,
 				5D7273E71F69F068009A72C8 /* ShopDetailViewController.swift in Sources */,
 				5DEC49441F6D944F00E03EDA /* CoreDataStack.swift in Sources */,
 				5D8818401F61D4E9000E5C91 /* Shops.swift in Sources */,

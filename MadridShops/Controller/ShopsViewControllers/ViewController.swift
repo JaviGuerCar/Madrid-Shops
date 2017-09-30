@@ -61,20 +61,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // tengo que distinguir por donde he podido llegar al Segue
         // Para eso le pusimos el identificador en el StoryBoard
         if segue.identifier == "ShowShopDetailSegue" {
-            // Tengo que indicarle el destino del segue
-            // que no es más que el ViewController al que quiero llegar
-            // en mi caso al ShopDetailViewController. Como segue.destination
-            // me da un ViewController genérico, necesito convertirlo
             let vc = segue.destination as! ShopDetailViewController
             
-            // necesito obtener el indexpath de la celda que se toca
-            //let indexPath = self.shopsCollectionView.indexPathsForSelectedItems![0]
-            //let selectedShop = self.shops?.get(index: indexPath.row)
-            
-            // Injecto la tienda (Inyeccion dependencias) a través de una propiedad creada en el ShopDetailViewController, llamada "shop"
-            // vc.shop = selectedShop
             let shopCD: ShopCD = sender as! ShopCD
-            vc.shop = mapShopCDIntoShop(shopCD: shopCD)
+            vc.shopCD = shopCD
         }
     }
     
@@ -129,9 +119,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return nil
         }
         
-//        if let annotation = annotation as? MapPin {
-//
-//        }
         // Better to make this class property
         let annotationIdentifier = "AnnotationIdentifier"
         
@@ -148,27 +135,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             // Configure your annotation view here
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "mapicon")
-//                        let logoItems = fetchedResultsController.fetchedObjects
-//                        for items in logoItems! {
-//                            if let logoURL = items.logo {
-//                                if let url = URL(string: logoURL),
-//                                    let data = NSData(contentsOf: url) {
-//                                    let image = UIImage(data: data as Data)
-//            
-//                                    annotationView.rightCalloutAccessoryView = UIImageView(image: image)
-//            
-//                                }
-//                            }
-//                        }
+
             annotationView.rightCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "shop_icon_2"))
 
-            
-//            if let d: Data = annotationView.data{
-//                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: annotationView.frame.height, height: annotationView.frame.height))
-//                imageView.image = UIImage(data: d)
-//                imageView.contentMode = .scaleAspectFit
-//                annotationView.leftCalloutAccessoryView = imageView
-//            }
         }
         
         return annotationView
