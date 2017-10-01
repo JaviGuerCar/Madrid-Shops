@@ -24,9 +24,6 @@ class ActivitiesMapPin: NSObject, MKAnnotation {
         self.logo = activityCD.logo
         self.activityCD = activityCD
     }
-    
-    func getActivityCD() -> ActivityCD {
-        return activityCD
-    }
+
     
 }

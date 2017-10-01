@@ -17,8 +17,10 @@ func mapActivityCDIntoActivity(activityCD: ActivityCD) -> Activity {
     activity.logo = activityCD.logo ?? ""
     activity.latitude = activityCD.latitude
     activity.longitude = activityCD.longitude
-    activity.openingHours_en = activityCD.openingHours ?? ""
+    activity.openingHours_en = activityCD.openingHours_en ?? ""
+    activity.openingHours_es = activityCD.openingHours_es ?? ""
     activity.description_en = activityCD.description_en ?? ""
+    activity.description_es = activityCD.description_es ?? ""
     
     return activity
 }
@@ -35,7 +37,9 @@ func mapActivityIntoActivityCD(context: NSManagedObjectContext, activity: Activi
     activityCD.latitude = activity.latitude ?? 0.0
     activityCD.longitude = activity.longitude ?? 0.0
     activityCD.description_en = activity.description_en
-    activityCD.openingHours = activity.openingHours_en
+    activityCD.description_es = activity.description_es
+    activityCD.openingHours_en = activity.openingHours_en
+    activityCD.openingHours_es = activity.openingHours_es
     activityCD.imageCache = LoadUrlImage(url: activity.image)
     activityCD.logoCache = LoadUrlImage(url: activity.logo)
     activityCD.mapCache = LoadUrlImage(url: "https://maps.googleapis.com/maps/api/staticmap?center=\(activity.latitude!),\(activity.longitude!)&zoom=17&size=320x220&markers=color:green%7C\(activity.latitude!),\(activity.longitude!)")

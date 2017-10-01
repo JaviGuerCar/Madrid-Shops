@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 extension String {
     func loadImage(into imageView: UIImageView) {
@@ -29,11 +28,19 @@ extension String {
     }
     
     
-    func getImage() -> UIImage? {
-        if let url = URL(string: self), let data = NSData(contentsOf: url), let image = UIImage(data: data as Data) {
-            return image
-        } else {
-            return nil
+    // Function to load image into callout
+    func myLoad(completion: @escaping (_ img: UIImage) -> Void){
+        let queue = OperationQueue()
+        queue.addOperation {
+            if let url = URL(string: self),
+                let data = NSData(contentsOf: url),
+                let image = UIImage(data: data as Data){
+                
+                OperationQueue.main.addOperation {
+                    completion(image)
+                    
+                }
+            }
         }
     }
     

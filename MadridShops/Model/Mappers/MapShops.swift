@@ -17,7 +17,9 @@ func mapShopCDIntoShop(shopCD: ShopCD) -> Shop {
     shop.latitude = shopCD.latitude
     shop.longitude = shopCD.longitude
     shop.description_en = shopCD.description_en ?? ""
-    shop.openingHours_en = shopCD.openingHours ?? ""
+    shop.description_es = shopCD.description_es ?? ""
+    shop.openingHours_en = shopCD.openingHours_en ?? ""
+    shop.openingHours_es = shopCD.openingHours_es ?? ""
     
     return shop
 }
@@ -33,8 +35,10 @@ func mapShopIntoShopCD(context: NSManagedObjectContext, shop: Shop) -> ShopCD {
     shopCD.logo = shop.logo
     shopCD.latitude = shop.latitude ?? 0.0
     shopCD.longitude = shop.longitude ?? 0.0
+    shopCD.description_es = shop.description_es
     shopCD.description_en = shop.description_en
-    shopCD.openingHours = shop.openingHours_en
+    shopCD.openingHours_es = shop.openingHours_es
+    shopCD.openingHours_en = shop.openingHours_en
     shopCD.imageCache = LoadUrlImage(url: shop.image)
     shopCD.logoCache = LoadUrlImage(url: shop.logo)
     shopCD.mapCache = LoadUrlImage(url: "https://maps.googleapis.com/maps/api/staticmap?center=\(shop.latitude!),\(shop.longitude!)&zoom=17&size=320x220&markers=color:green%7C\(shop.latitude!),\(shop.longitude!)")

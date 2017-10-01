@@ -3,6 +3,7 @@
     <entity name="ActivityCD" representedClassName="ActivityCD" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="description_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_es" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageCache" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -11,11 +12,13 @@
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mapCache" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="openingHours" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="openingHours_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="openingHours_es" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ShopCD" representedClassName="ShopCD" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="description_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_es" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageCache" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -24,10 +27,11 @@
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mapCache" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="openingHours" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="openingHours_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="openingHours_es" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ActivityCD" positionX="-63" positionY="45" width="128" height="210"/>
-        <element name="ShopCD" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="ActivityCD" positionX="-63" positionY="45" width="128" height="240"/>
+        <element name="ShopCD" positionX="-63" positionY="-18" width="128" height="240"/>
     </elements>
 </model>
