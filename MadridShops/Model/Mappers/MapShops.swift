@@ -24,7 +24,7 @@ func mapShopCDIntoShop(shopCD: ShopCD) -> Shop {
     return shop
 }
 
-// Necesito inyecarle un contexto como parámetro
+// Context inject as parameter
 func mapShopIntoShopCD(context: NSManagedObjectContext, shop: Shop) -> ShopCD {
     
     // Mapping Shop into ShopsCD

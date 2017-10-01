@@ -25,7 +25,7 @@ func mapActivityCDIntoActivity(activityCD: ActivityCD) -> Activity {
     return activity
 }
 
-// Necesito inyecarle un contexto como parámetro
+// Context inject as parameter
 func mapActivityIntoActivityCD(context: NSManagedObjectContext, activity: Activity) -> ActivityCD {
     
     // Mapping Shop into ShopsCD

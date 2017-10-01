@@ -42,7 +42,6 @@ class ViewController: UIViewController {
         
         self.shopsCollectionView.delegate = self
         self.shopsCollectionView.dataSource = self
-        //self.annotationPins()
         
     }
 
@@ -60,7 +59,6 @@ class ViewController: UIViewController {
         // Para eso le pusimos el identificador en el StoryBoard
         if segue.identifier == "ShowShopDetailSegue" {
             let vc = segue.destination as! ShopDetailViewController
-
             let shopCD: ShopCD = sender as! ShopCD
             vc.shopCD = shopCD
         }
@@ -88,8 +86,6 @@ class ViewController: UIViewController {
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context!, sectionNameKeyPath: nil, cacheName: "ShopCacheFile")
-        // Hacerse delegado
-        //aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
         do {

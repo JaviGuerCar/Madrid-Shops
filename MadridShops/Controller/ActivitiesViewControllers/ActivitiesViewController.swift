@@ -42,7 +42,6 @@ class ActivitiesViewController: UIViewController  {
         
         self.activitiesCollectionView.delegate = self
         self.activitiesCollectionView.dataSource = self
-        //self.annotationPins()
         
     }
     
@@ -60,8 +59,6 @@ class ActivitiesViewController: UIViewController  {
         if segue.identifier == "ShowActivityDetailSegue" {
             // Establezco el VC de destino
             let vc = segue.destination as! ActivityDetailViewController
-            
-            //let activity = self.activities?.get(index: indexPath.row)
             let activityCD: ActivityCD = sender as! ActivityCD
             vc.activityCD = activityCD
         }
@@ -89,8 +86,6 @@ class ActivitiesViewController: UIViewController  {
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context!, sectionNameKeyPath: nil, cacheName: "ActivityCacheFile")
-        // Hacerse delegado
-        //aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
         do {

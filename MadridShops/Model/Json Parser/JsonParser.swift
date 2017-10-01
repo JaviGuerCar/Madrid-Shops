@@ -18,7 +18,7 @@ func parseShops(data: Data) -> Shops {
         let jsonObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, Any>
         let result = jsonObject["result"] as! [Dictionary<String, Any>]
         
-        // Recorremos el array result recogido de Internet las tiendas
+        // Recorremos el array result
         for shopJson in result{
             let shop = Shop(name: shopJson["name"]! as! String)
             shop.address = shopJson["address"]! as! String

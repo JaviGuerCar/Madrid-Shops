@@ -29,26 +29,3 @@ class ShopMapPin: NSObject, MKAnnotation {
     
 }
 
-
-@available(iOS 11.0, *)
-class ShopMapPinMarkerView: MKMarkerAnnotationView {
-    override var annotation: MKAnnotation? {
-        willSet {
-            
-            guard let shopAnnotation = newValue as? ShopMapPin else { return }
-            canShowCallout = true
-            calloutOffset = CGPoint(x: -5, y: 5)
-            
-            
-            let logoButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:30, height: 30)))
-            shopAnnotation.logo?.myLoad(completion: { (img: UIImage) in
-                logoButton.setBackgroundImage(img, for: UIControlState())
-            })
-            rightCalloutAccessoryView = logoButton
-            
-            //glyphImage = shopAnnotation.logo?.getImage()
-            
-        }
-    }
-}
-
