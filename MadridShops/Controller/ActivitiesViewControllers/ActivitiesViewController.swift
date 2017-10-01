@@ -14,7 +14,8 @@ import MapKit
 class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     var context: NSManagedObjectContext!
-    var locationList: [MapPin]?
+    var locationList: [ActivitiesMapPin]?
+    var activityCD: ActivityCD?
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activitiesCollectionView: UICollectionView!
@@ -41,20 +42,27 @@ class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKM
         
         self.activitiesCollectionView.delegate = self
         self.activitiesCollectionView.dataSource = self
-        self.annotationPins()
+        //self.annotationPins()
         
     }
     
+    // Segue a mano
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //let shop = self.shops?.get(index: indexPath.row)
+        let activityCD: ActivityCD = fetchedResultsController.object(at: indexPath)
+        self.performSegue(withIdentifier: "ShowActivityDetailSegue", sender: activityCD)
+    }
     
+    
+    // Segue desde una celda
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Compruebo si el ID del segue es el del Storyboard
         if segue.identifier == "ShowActivityDetailSegue" {
             // Establezco el VC de destino
             let vc = segue.destination as! ActivityDetailViewController
-            let indexPath = self.activitiesCollectionView.indexPathsForSelectedItems![0]
             
             //let activity = self.activities?.get(index: indexPath.row)
-            let activityCD: ActivityCD = fetchedResultsController.object(at: indexPath)
+            let activityCD: ActivityCD = sender as! ActivityCD
             vc.activityCD = activityCD
         }
     }
@@ -97,17 +105,63 @@ class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKM
         return _fetchedResultsController!
     }
     
+    // Delegate method
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        //print("Finish rendering")
+        self.annotationPins()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Don't want to show a custom image if the annotation is the user's location.
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        // Better to make this class property
+        let annotationIdentifier = "ActivityAnnotation"
+        
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        
+        if let annotationView = annotationView {
+            // Configure your annotation view here
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "mapicon")
+            
+        }
+        
+        return annotationView
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("Touch calloutAccessory")
+        if let annotation = view.annotation as? ActivitiesMapPin {
+            let activityCD = annotation.getActivityCD()
+            performSegue(withIdentifier: "ShowActivityDetailSegue", sender: activityCD)
+        }
+    }
+    
+    
+    
     // Función para pintar las anotations
     func annotationPins() {
-        self.locationList = [MapPin]() // Creo un array de MapPin
-        if let activitiesItems = fetchedResultsController.fetchedObjects {
+        self.locationList = [ActivitiesMapPin]() // Creo un array de ShopMapPin
+        if let activityItems = fetchedResultsController.fetchedObjects {
             // Recorro los objetos de la consulta
-            for item in activitiesItems {
+            for item in activityItems {
                 // Recupero las coordenadas de las shops
                 if let longitude: CLLocationDegrees = Double(item.longitude),
                     let latitude: CLLocationDegrees = Double(item.latitude){
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    let mapPin: MapPin = MapPin(coordinate: coordinate, title: item.name!, subtitle: item.address!, logo: item.logo!)
+                    let mapPin: ActivitiesMapPin = ActivitiesMapPin(coordinate: coordinate, activityCD: item)
                     self.locationList?.append(mapPin)
                     
                 }
@@ -117,5 +171,4 @@ class ActivitiesViewController: UIViewController, CLLocationManagerDelegate, MKM
         self.mapView.addAnnotations(locationList!)
         
     }
-
 }

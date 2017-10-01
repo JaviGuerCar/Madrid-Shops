@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -46,64 +47,83 @@
                                     <constraint firstAttribute="height" constant="672" id="xph-Oq-buS"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G73-kV-MD0">
-                                <rect key="frame" x="233" y="160" width="129" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="shops_icon">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowShopsSegue" id="hvg-iJ-UHH"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MADRID SHOPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fj-sa-EfD">
-                                <rect key="frame" x="20" y="100" width="374" height="29"/>
+                                <rect key="frame" x="20" y="100" width="374" height="28.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a79-jf-H6S">
-                                <rect key="frame" x="54" y="160" width="129" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="activities_icon">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="aAt-pM-H5M" kind="show" identifier="ShowActivitiesSegue" id="IGd-30-ghc"/>
-                                </connections>
-                            </button>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnx-ES-vZc">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="14b-ja-Teg">
+                                <rect key="frame" x="60" y="160" width="291" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading Data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC4-sY-kVL">
-                                        <rect key="frame" x="8" y="326" width="398" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a79-jf-H6S">
+                                        <rect key="frame" x="0.0" y="0.66666666666665719" width="120" height="149.00000000000003"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="149.00000000000003" id="CQU-OP-tmb"/>
+                                            <constraint firstAttribute="width" constant="120" id="abS-Cp-e4P"/>
+                                            <constraint firstAttribute="width" secondItem="a79-jf-H6S" secondAttribute="height" multiplier="120:149" id="ayS-LY-euz"/>
+                                        </constraints>
+                                        <state key="normal" image="activities_icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="aAt-pM-H5M" kind="show" identifier="ShowActivitiesSegue" id="IGd-30-ghc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G73-kV-MD0">
+                                        <rect key="frame" x="171" y="0.0" width="120" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="G73-kV-MD0" secondAttribute="height" multiplier="4:5" id="KUu-9J-pSb"/>
+                                            <constraint firstAttribute="height" constant="150" id="nxW-oi-aL4"/>
+                                            <constraint firstAttribute="width" constant="120" id="yeZ-EP-WkL"/>
+                                        </constraints>
+                                        <state key="normal" image="shops_icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="ShowShopsSegue" id="hvg-iJ-UHH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                            </stackView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnx-ES-vZc">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sQN-FJ-sXS">
-                                <rect key="frame" x="189" y="350" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sQN-FJ-sXS">
+                                <rect key="frame" x="188" y="349" width="37" height="37"/>
                                 <color key="color" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC4-sY-kVL">
+                                <rect key="frame" x="148" y="390" width="117" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="centerX" secondItem="9fj-sa-EfD" secondAttribute="centerX" id="05X-CX-U7C"/>
                             <constraint firstAttribute="trailing" secondItem="F3R-LZ-ZY6" secondAttribute="trailing" id="0oQ-rF-gXc"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="trailing" secondItem="14b-ja-Teg" secondAttribute="trailing" constant="63" id="3p8-YL-RYB"/>
                             <constraint firstAttribute="bottom" secondItem="F3R-LZ-ZY6" secondAttribute="bottom" id="6hs-Lg-0af"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="trailing" secondItem="3ib-PN-Qu0" secondAttribute="trailing" id="9vN-dA-ttQ"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="trailing" secondItem="uC4-sY-kVL" secondAttribute="trailing" constant="149" id="A0L-9m-cqd"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" id="DmQ-sR-g1Z"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="bottom" secondItem="14b-ja-Teg" secondAttribute="bottom" constant="426" id="E97-UI-TWn"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="bottom" secondItem="wnx-ES-vZc" secondAttribute="bottom" id="F3A-NW-7h0"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" id="OZ0-YY-0dN"/>
+                            <constraint firstItem="sQN-FJ-sXS" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" constant="285" id="ObX-uR-Zn9"/>
+                            <constraint firstItem="14b-ja-Teg" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" constant="96" id="RVn-E6-sft"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="bottom" secondItem="3ib-PN-Qu0" secondAttribute="bottom" id="SVn-w6-2ii"/>
+                            <constraint firstItem="wnx-ES-vZc" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" id="Upy-ky-ov7"/>
+                            <constraint firstItem="uC4-sY-kVL" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" constant="148" id="VtT-yE-7GO"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="trailing" secondItem="sQN-FJ-sXS" secondAttribute="trailing" constant="189" id="ZqE-ZK-bLD"/>
                             <constraint firstItem="9fj-sa-EfD" firstAttribute="top" secondItem="3ib-PN-Qu0" secondAttribute="top" constant="36" id="aAB-Mw-Bft"/>
+                            <constraint firstItem="14b-ja-Teg" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" constant="60" id="gS6-VH-vK5"/>
                             <constraint firstItem="9fj-sa-EfD" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" constant="20" id="gzH-gJ-Jd5"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="bottom" secondItem="uC4-sY-kVL" secondAttribute="bottom" constant="325.66666666666669" id="hhc-hO-kyb"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="F7S-zS-xv7" secondAttribute="leading" id="jo4-4A-L2k"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="bottom" secondItem="F7S-zS-xv7" secondAttribute="bottomMargin" id="lEz-Qb-aLu"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="centerX" secondItem="F7S-zS-xv7" secondAttribute="centerX" id="mm1-vz-tAN"/>
@@ -113,8 +133,11 @@
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="F7S-zS-xv7" secondAttribute="topMargin" id="wBL-j7-6Wc"/>
                             <constraint firstItem="3ib-PN-Qu0" firstAttribute="trailing" secondItem="9fj-sa-EfD" secondAttribute="trailing" constant="20" id="wh7-WQ-2rD"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="top" secondItem="F7S-zS-xv7" secondAttribute="top" constant="64" id="x3b-Mj-pv4"/>
+                            <constraint firstItem="3ib-PN-Qu0" firstAttribute="trailing" secondItem="wnx-ES-vZc" secondAttribute="trailing" id="x91-NU-AqE"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="F7S-zS-xv7" secondAttribute="leading" id="xI7-BD-fCh"/>
+                            <constraint firstItem="sQN-FJ-sXS" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" constant="188" id="xZo-mg-lBq"/>
                             <constraint firstItem="F3R-LZ-ZY6" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" id="yMN-TM-oeR"/>
+                            <constraint firstItem="wnx-ES-vZc" firstAttribute="leading" secondItem="3ib-PN-Qu0" secondAttribute="leading" id="zcf-PU-UMQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3ib-PN-Qu0"/>
                     </view>
@@ -173,7 +196,6 @@
                                         <connections>
                                             <outlet property="imageView" destination="CpJ-9P-ZZN" id="PS4-5e-ZOv"/>
                                             <outlet property="label" destination="yKY-KM-L1F" id="wZN-gm-yxV"/>
-                                            <segue destination="iC9-Rl-2hQ" kind="show" identifier="ShowActivityDetailSegue" id="kJs-1n-X7b"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -196,6 +218,7 @@
                     <connections>
                         <outlet property="activitiesCollectionView" destination="yx7-Lh-Tl7" id="rKy-Vo-QLH"/>
                         <outlet property="mapView" destination="OIa-K3-OQJ" id="dqk-Ae-R6j"/>
+                        <segue destination="iC9-Rl-2hQ" kind="show" identifier="ShowActivityDetailSegue" id="uBK-CT-GD6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLr-pC-zGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -389,7 +412,7 @@
     </scenes>
     <resources>
         <image name="Madrid.jpg" width="692" height="1024"/>
-        <image name="activities_icon" width="196" height="244"/>
-        <image name="shops_icon" width="197" height="247"/>
+        <image name="activities_icon" width="120" height="149"/>
+        <image name="shops_icon" width="120" height="150"/>
     </resources>
 </document>

@@ -28,4 +28,13 @@ extension String {
         }
     }
     
+    
+    func getImage() -> UIImage? {
+        if let url = URL(string: self), let data = NSData(contentsOf: url), let image = UIImage(data: data as Data) {
+            return image
+        } else {
+            return nil
+        }
+    }
+    
 }

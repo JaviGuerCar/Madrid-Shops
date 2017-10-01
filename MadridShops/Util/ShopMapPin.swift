@@ -1,5 +1,5 @@
 //
-//  MapPin.swift
+//  ShopMapPin.swift
 //  MadridShops
 //
 //  Created by Fco. Javier Guerrero Carmona on 21/9/17.
@@ -7,19 +7,29 @@
 //
 
 import Foundation
+
 import MapKit
 import CoreLocation
 
-class MapPin: NSObject, MKAnnotation {
+class ShopMapPin: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
     var logo: String?
+    var shopCD: ShopCD
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, logo: String) {
+    init(coordinate: CLLocationCoordinate2D, shopCD: ShopCD) {
         self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-        self.logo = logo
+        self.title = shopCD.name
+        self.subtitle = shopCD.address
+        self.logo = shopCD.logo
+        self.shopCD = shopCD
     }
+    
+    func getShopCD() -> ShopCD {
+        return shopCD
+    }
+    
 }
+
+
